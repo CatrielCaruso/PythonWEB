@@ -28,18 +28,16 @@ class Usuario(models.Model):
     telefono = models.CharField(max_length=15)
     email = models.EmailField()
 
- 
+    
+class Categoria(models.Model):
+    id_categoria = models.AutoField(primary_key=True)
+    descripcion = models.TextField()
 
 class Producto(models.Model):
     codigo = models.AutoField(primary_key=True) #AutoField es un campo autoincremental 
     precio = models.DecimalField(max_digits=4, decimal_places=2)
     descripcion = models.TextField()
-    id_categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
-
-   
-class Categoria(models.Model):
-    id_categoria = models.AutoField(primary_key=True)
-    descripcion = models.TextField()
+    id_categoria = models.ForeignKey('Categoria', on_delete=models.CASCADE)
 
 
 class Pedido(models.Model):
@@ -47,9 +45,9 @@ class Pedido(models.Model):
     descripcion = models.TextField()
     precio = models.DecimalField(max_digits=4, decimal_places=2)
     fecha_pedido = models.DateTimeField(default=timezone.now)
-    estado = models.ChardField(max_length=100)
-    dni= models.ForeignKey(Usuario, on_delete=models.CASCADE)
-    productos = models.ManyToManyField(Producto) #Se pone asi cuando hay una relacion de muchos a muchos
+    estado = models.CharField(max_length=100)
+    dni= models.ForeignKey('Usuario', on_delete=models.CASCADE)
+    productos = models.ManyToManyField('Producto') #Se pone asi cuando hay una relacion de muchos a muchos
 
 
 
