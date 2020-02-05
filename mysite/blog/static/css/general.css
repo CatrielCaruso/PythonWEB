@@ -1,0 +1,23 @@
+.header h1 {
+    text-align: left;
+    padding-left: 85px;
+    color: darkcyan;
+    background-color: beige;
+    height: 100px;
+    vertical-align: middle;
+    padding-top: 7px;
+     
+}
+
+.header img{
+    padding-left: 7x;
+    width: 50px;
+    height: 50px;
+}
+
+
+.container-fluid  {
+    padding-left: 0px;
+    padding-right: 0px;
+    
+}
