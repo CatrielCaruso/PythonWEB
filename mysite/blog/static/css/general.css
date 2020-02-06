@@ -1,23 +1,40 @@
-.header h1 {
-    text-align: left;
-    padding-left: 85px;
-    color: darkcyan;
-    background-color: beige;
+.header {
+    background-color: white;
     height: 100px;
-    vertical-align: middle;
-    padding-top: 7px;
-     
+    padding-left: 100px;
+    
 }
 
-.header img{
-    padding-left: 7x;
-    width: 50px;
-    height: 50px;
+h1 {
+    text-align: left;
+    color: darkcyan;
+    vertical-align: middle;
+    padding-top: 10px;  
+    display: inline-block; 
+    padding-left: 20px;
+    
+}
+
+#imagen1{
+    padding-top: 7px;
+    width: 80px;
+    height: 80px;
+   
 }
 
 
 .container-fluid  {
     padding-left: 0px;
     padding-right: 0px;
+    
+}
+
+#login{
+    padding-right: 50px;
+    padding-top: 65px;
+}
+
+body {
+    background-color: beige !important;
     
 }
