@@ -24,23 +24,39 @@ class Usuario(models.Model):
     apellido = models.CharField(max_length=45)
     direccion = models.CharField(max_length=100)
     usuario = models.CharField(max_length=10, help_text= "El usuario debe contener entre 6 a 10 caracteres")
-    contrasenia = models.CharField(max_length=20, help_text= "La contraseña debe contener entre 8 a 16 caracteres")
+    password = models.CharField(max_length=20, help_text= "La contraseña debe contener entre 8 a 16 caracteres")
     telefono = models.CharField(max_length=15)
     email = models.EmailField()
 
+    class Meta:
+        verbose_name= 'Usuario'
+        verbose_name_plural = 'Usuarios'
+        ordering= ['usuario', 'password']
+
     def __str__(self):
-        return self.nombre
+        return  '%s %s' %(self.usuario, self.password)
 
     
 class Categoria(models.Model):
     id_categoria = models.AutoField(primary_key=True)
     descripcion = models.TextField()
 
+    class Meta:
+        verbose_name= 'Categoria'
+        verbose_name_plural= 'Categorias'
+        ordering =['id_categoria']
+
+
 class Producto(models.Model):
     codigo = models.AutoField(primary_key=True) #AutoField es un campo autoincremental 
     precio = models.DecimalField(max_digits=4, decimal_places=2)
     descripcion = models.TextField()
     id_categoria = models.ForeignKey('Categoria', on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name= 'Producto'
+        verbose_name_plural= 'Productos'
+        ordering =['codigo']
 
 
 class Pedido(models.Model):
@@ -52,5 +68,13 @@ class Pedido(models.Model):
     dni= models.ForeignKey('Usuario', on_delete=models.CASCADE)
     productos = models.ManyToManyField('Producto') #Se pone asi cuando hay una relacion de muchos a muchos
 
+    class Meta:
+        verbose_name= 'Pedido'
+        verbose_name_plural= 'Pedidos'
+        ordering =['fecha_pedido']
+    
+    def __str__(self):
+        return self.estado
+    
 
 
