@@ -125,6 +125,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+<<<<<<< HEAD
 
 MEDIA_URL = '/img/'
 
@@ -134,3 +135,10 @@ STATICFILES_DIRS = [
 
 LOGIN_REDIRECT_URL='/'
 LOGOUT_REDIRECT_URL='/'
+=======
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+LOGIN_REDIRECT_URL = '/'
+
+LOGOUT_REDIRECT_URL = '/'
+>>>>>>> e9c2331847f5cb999388f37371463aa16da53349

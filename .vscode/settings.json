@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 {
     "python.pythonPath": "venv\\Scripts\\python.exe"
 }
 
+=======
+{
+    "python.pythonPath": "venv\\Scripts\\python.exe"
+}
+>>>>>>> e9c2331847f5cb999388f37371463aa16da53349
