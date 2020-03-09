@@ -1,26 +1,52 @@
 {%  extends 'blog/main.html' %}
 
 {% block content %}
+<!DOCTYPE html>
+<html>
 
-		<br>
+<head>
+	<title>Busqueda de producto por catalogos</title>
+</head>
 
-		<div class="row">
-			<div class="col-md">
-				<div class="card card-body">
-					<h5>Products</h5>
-				</div>
-				<div class="card card-body">
-					<table class="table">
-						<tr>
-							<th>Producto</th>
-							<th>Categoria</th>
-							<th>Precio</th>
-						</tr>
+<body>
 
-					</table>
-				</div>
-			</div>
+	<form action="/buscar/" method="GET">
+		<input type="text" name="pro">
+		<input type="submit" name="Buscar">
 
-		</div>
+	</form>
+
+	<p>Resultados de:<strong>{{query}}</strong></p>
+	
+	
+	{% if articulos %}
+
+	         <p>Articulos encontrados {{articulos|length}} articulo</p>
+
+	       <ul>
+		        {%for articulo in articulos%}
+				   
+						   
+				            <li>
+
+			                    {{articulo.descripcion}} &nbsp;{{articulo.precio}}
+
+
+
+		                     </li>
+
+		        {% endfor %}
+
+	        </ul>
+
+	{% else %}
+
+	      <p>No se encontraron articulos</p>
+
+	{% endif %}
+</body>
+
+</html>
+
 
 {% endblock content %}
