@@ -8,6 +8,9 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 @login_required
 def home(request):
+#La logica deberia ser algo asi para obtener y compara con la base de datos y despueés ver como enviarlo a la template pedidos.    
+#def home(request,id):
+    #producto_seleccionado=producto.objects.get(id_producto=id)
     
     return render(request, 'blog/main.html')
 

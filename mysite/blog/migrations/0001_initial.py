@@ -12,23 +12,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.CreateModel(
-            name='Pedido',
-            fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('descripcion', models.CharField(max_length=50)),
-                ('precio', models.IntegerField()),
-                ('fecha_pedido', models.DateTimeField(default=django.utils.timezone.now)),
-                ('estado', models.BooleanField()),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Producto',
-            fields=[
-                ('nombre', models.CharField(max_length=10)),
-                ('descripcion', models.CharField(max_length=50)),
-                ('precio', models.IntegerField()),
-                ('id_producto', models.AutoField(primary_key=True, serialize=False)),
-            ],
-        ),
+       
     ]
