@@ -12,8 +12,8 @@ def home(request):
     # La logica deberia ser algo asi para obtener y compara con la base de datos y despueés ver como enviarlo a la template pedidos.
     # def home(request,id):
     # producto_seleccionado=producto.objects.get(id_producto=id)
-
-    return render(request, 'blog/main.html')
+    produ=Producto.objects.all()
+    return render(request, 'blog/main.html',{"produ":produ})
 
 
 @login_required
@@ -38,8 +38,12 @@ def buscar(request):
 
 
 @login_required
+#def pedidos(request,id): esto iría
 def pedidos(request):
-    return render(request, 'blog/pedidos.html')
+    pedi = Producto.objects.filter(id_producto__icontains=id)
+
+
+    return render(request, 'blog/pedidos.html',{"pedi": pedi})
 
 
 def register(request):

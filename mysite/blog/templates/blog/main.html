@@ -24,85 +24,26 @@
 		
 
 		<table style="width:50%" align="center">
+			
 			<tr align="center">
-				<th>Producto 1</th>
+				{%for pro in produ%}
 
-
-				<th>Producto 2</th>
-				<th>Producto 3</th>
-			</tr>
-			<tr align="center">
-				<td> <img src="{% static 'img/Pulover.png' %}" /></td>
-				<td> <img src="{% static 'img/Remera.png' %}" /></td>
-				<td> <img src="{% static 'img/Campera.png' %}" /></td>
-
-
-
-
-			</tr>
-			<tr align="center">
-
-				<td>
-					<a href="#" value="{{ Producto.id }}" >Comprar</a>
-				</td>
-				<td>
-					<a href="#">Comprar</a>
-				</td>
-				<td>
-					<a href="#">Comprar</a>
-				</td>
-			</tr>
-			<tr align="center">
-				<th>Producto 4</th>
-				<th>Producto 5</th>
-				<th>Producto 6</th>
-			</tr>
-			<tr align="center">
-				<td> <img src="{% static 'img/Pulover.png' %}" /></td>
-				<td> <img src="{% static 'img/Remera.png' %}" /></td>
-				<td> <img src="{% static 'img/Campera.png' %}" /></td>
-
-
-
+				
+					<tr>
+						<td>{{pro.descripcion}}</td>
+						<td><a class="btn btn-sm btn-info" href="{% url 'pedidos' %}">Comprar</a></td>
+						 
+						
+		
+					</tr>
+			
+						
+				
+				{% endfor %}
 
 			</tr>
-			<tr align="center">
-
-				<td>
-					<a href="#">Comprar</a>
-				</td>
-				<td>
-					<a href="#">Comprar</a>
-				</td>
-				<td>
-					<a href="#">Comprar</a>
-				</td>
-			</tr>
-			<tr align="center">
-				<th>Producto 6</th>
-				<th>Producto 7</th>
-				<th>Producto 8</th>
-			</tr>
-			<tr align="center">
-				<td> <img src="{% static 'img/Pulover.png' %}" /></td>
-				<td> <img src="{% static 'img/Remera.png' %}" /></td>
-				<td> <img src="{% static 'img/Campera.png' %}" /></td>
-
-
-
-
-			</tr>
-			<tr align="center">
-				<td>
-					<a href="#">Comprar</a>
-				</td>
-				<td>
-					<a href="#">Comprar</a>
-				</td>
-				<td>
-					<a href="#">Comprar</a>
-				</td>
-			</tr>
+			
+			
 		</table>
 		
 	</div>
