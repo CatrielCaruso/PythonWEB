@@ -38,12 +38,15 @@ def buscar(request):
 
 
 @login_required
-#def pedidos(request,id): esto iría
-def pedidos(request):
-    pedi = Producto.objects.filter(id_producto__icontains=id)
+def pedidos(request,id_producto): 
+#def pedidos(request):
+   
+   pedi = Producto.objects.get(id_producto=id_producto)
+    
+  
+   
 
-
-    return render(request, 'blog/pedidos.html',{"pedi": pedi})
+   return render(request, 'blog/pedidos.html',{"pedi":pedi})
 
 
 def register(request):
@@ -73,3 +76,8 @@ def logout(request):
     # Redireccionamos a la portada
     return redirect('/')
 # def post_list(request):
+
+
+
+
+
