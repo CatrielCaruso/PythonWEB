@@ -25,28 +25,39 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 </head>
 
-<body>
+<body> 
 	<h1 class="text-center">Pagina de registracion</h1>
 	<div>
 		<div class="modal-dialog text-center" >
-		<div class="col-sm-6 main-section animated fadeInUp">
-			<div class="modal-content ">
-				<form method="post" action="{% url 'register'%}">
-					{% csrf_token %}
+		   <div class="col-sm-6 main-section animated fadeInUp">
+			   
+			    <div class="modal-content ">
+				
+	
+				   <form method="POST" action="">
+					   {% csrf_token %}
+					   
+					   {{form.username.label}}
+					   {{form.username}}
 
-					{% if form.errors %}
-					<p>Error</p>
+					   
 
-					{% endif %}
+					   {{form.password1.label}}
+					   {{form.password1}}
 
-					{{ form }}
+					   
+					   {{form.password2.label}}
+					   {{form.password2}}
 
-					<input class="btn btn-primary" type="submit" value="Register">
-				</form>
-			</div>
-		</div>
-	</div>
-</div>
+                      
+
+					  <input class="btn btn-primary" type="submit" value="Register">
+				   </form>
+			    </div>
+		   </div>
+	    </div>
+    </div> 
+			
 </body>
 
 

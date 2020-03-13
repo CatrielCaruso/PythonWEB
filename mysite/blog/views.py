@@ -4,6 +4,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout as do_logout
 from django.contrib.auth.decorators import login_required
 from blog.models import Producto
+from .forms import CreateUserForm
+from django.contrib import messages
 
 
 # Create your views here.
@@ -50,13 +52,17 @@ def pedidos(request,id_producto):
 
 
 def register(request):
+    
+    form = CreateUserForm()
+
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
+           
+           
             username = form.cleaned_data['username']
             password = form.cleaned_data['password1']
-
             user = authenticate(username=username, password=password)
             login(request, user)
             return redirect('home')
@@ -64,9 +70,6 @@ def register(request):
         form = UserCreationForm()
 
     context = {'form': form}
-    form.fields['username'].help_text = None
-    form.fields['password1'].help_text = None
-    form.fields['password2'].help_text = None
     return render(request, 'registration/register.html', context)
 
 
