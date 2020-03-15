@@ -31,12 +31,12 @@ def buscar(request):
         producto = request.GET["pro"]
         articulos = Producto.objects.filter(descripcion__icontains=producto)
 
-        return render(request, 'blog/producto.html', {"articulos": articulos, "query": producto})
-    else:
+    return render(request, 'blog/producto.html', {"articulos": articulos, "query": producto})
+    #else:
 
-        mensaje = "No has introducido ningun articulo"
+       # mensaje = "No has introducido ningun articulo"
 
-    return HttpResponse(mensaje)
+    #return HttpResponse(mensaje)
 
 
 @login_required
