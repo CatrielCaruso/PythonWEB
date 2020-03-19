@@ -23,13 +23,15 @@
 		
 		<link rel="stylesheet" type="text/css" href="{%static 'css\register.css'%}" >
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
 
 <body> 
-	    <h1 class="text-center">Pagina de registracion</h1>
+	    <h1 class="text-center animated fadeInUp">Pagina de registración</h1>
 	<div class="container">
 		
-		   <div class="login-form col-md-4 offset-md-4 animated fadeInUp">
+		   <div class="login-form col-md-4 offset-md-4  animated fadeInUp">
 			   
 			    
 				
@@ -39,23 +41,24 @@
 					    <div class="form-group">
 							<label>Nombre de usuario:</label>
 					     
-					     {{form.username}}
+						
+						 <input type="text" name="username" placeholder="Ingrese nombre..." class="form-control" required>
 					    </div>
 						
 					    <div class="form-group">
 							
 						 
 						 <label>Contraseña:</label>
-					      {{form.password1}}
+						 <input type="password" name="password1" placeholder="Ingrese contraseña..." class="form-control" required >
 					    </div>
 						
 					    <div class="form-group">
 							<label>Contraseña(confirmación):</label>
-					     {{form.password2}}
+							<input type="password" name="password2" placeholder="Ingrese contraseña..." class="form-control" required >
                         </div>
                       
 
-					  <input class="btn btn-primary btn-block" type="submit" value="Register">
+					  <input class="btn btn-primary btn-block" type="submit" value="Registrar">
 				   </form>
 			    
 		   </div>
