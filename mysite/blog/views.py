@@ -6,6 +6,8 @@ from django.contrib.auth.decorators import login_required
 from blog.models import Producto
 from .forms import CreateUserForm
 from django.contrib import messages
+from django.core.mail import send_mail
+from django.conf import settings
 
 
 # Create your views here.
@@ -82,5 +84,13 @@ def logout(request):
 
 
 
-
+@login_required
+def contacto(request):
+    if request.method=="POST":
+       subject=request.POST["asunto"] 
+       message=request.POST["mensaje"] + " " + request.POST["email"]
+       email_from=settings.EMAIL_HOST_USER
+       recipient_list=["cardozocaruso@gmail.com"]
+       send_mail(subject,message,email_from,recipient_list)
+    return render(request, 'blog/contacto.html')
 
