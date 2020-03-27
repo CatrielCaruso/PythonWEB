@@ -39,6 +39,11 @@
 				   <form method="POST" action="">
 					   {% csrf_token %}
 					    <div class="form-group">
+							
+							{%if form.errors %}
+							
+                          <p class="text-danger">Recuerde que la contraseña debe tener un minimo de 8 caracteres... o el usuario ya existe...</p>
+                            {% endif %}    
 							<label>Nombre de usuario:</label>
 					     
 						
