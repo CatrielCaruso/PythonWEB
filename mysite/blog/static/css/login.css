@@ -30,3 +30,10 @@ body{
 	font-family: Woodland;
 
 }
+
+.input-group-text {
+	background: #f7ba5b !important;
+	color: white !important;
+	border: 0 !important;
+	
+}
