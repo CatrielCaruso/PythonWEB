@@ -19,42 +19,35 @@
 	
 	{%  include 'blog/navbar.html' %}
 	{% block content %}
-	<div class="container-fluid">
-	
-		<h1>Bienvenido!!!!</h1>
-		
-		<h2>{{user.username}}</h2>
-		
-
-		<table style="width:50%" align="center">
-			
-			<tr align="center">
-				{%for pro in produ%}
-
-				
-					<tr>
-						<td>{{pro.descripcion}}</td>
-						<td><a class="btn btn-sm btn-info" href="{% url 'pedidos' pro.id_producto %}">Comprar</a></td>
-						 
-						
-		
-					</tr>
-			
-						
-				
-				{% endfor %}
-
-			</tr>
-			
-			
-		</table>
-		
+	<div class="container">
+		<div class="first-column">
+  			<div class="row">
+	    		<div class="col-lg-2">
+	      			<h4>Categorías</h4>
+	    		</div>
+	    	</div>
+	    </div>
+	    <div class="second-column">
+	    	<div class="col-lg-10 align-self-center">
+	    		<h3>ENCONTRÁ TODO LO QUE BUSCÁS, ACÁ</h3>
+	    		<div class="row">
+	    		{%for pro in produ%}
+	    		
+	    			<div class="col">
+	    				<h6>{{pro.descripcion}}</h6>
+	    				<a class="btn btn-sm btn-info" href="{% url 'pedidos' pro.id_producto %}">Comprar</a>
+	    			</div>
+	    		
+	    		{% endfor %}
+	    		</div>
+	    	</div>
+		</div>
 	</div>
 	
 
 	{% endblock %}
-	<hr>
-	<h5>Cardozo-Caruso</h5>
+	
+	
 
 </body>
 
