@@ -16,6 +16,7 @@ def home(request):
     # La logica deberia ser algo asi para obtener y compara con la base de datos y despueés ver como enviarlo a la template pedidos.
     # def home(request,id):
     # producto_seleccionado=producto.objects.get(id_producto=id)
+    
     produ=Producto.objects.all()
     return render(request, 'blog/main.html',{"produ":produ})
 
@@ -24,6 +25,22 @@ def home(request):
 def producto(request):
     return render(request, 'blog/producto.html')
 
+
+
+@login_required
+def pedido(request):
+    
+    
+    request.session["carrito"]
+    print(request.session.get("carrito"))
+    carrito=request.session.get("carrito")
+    return render(request, 'blog/pedidos.html',{"carrito":carrito})  
+
+@login_required
+def index(request):
+    request.session["carrito"]=[]
+    print(request.session.session_key)
+    return render(request, 'blog/index.html')
 
 @login_required
 def buscar(request):
@@ -46,11 +63,16 @@ def pedidos(request,id_producto):
 #def pedidos(request):
    
    pedi = Producto.objects.get(id_producto=id_producto)
-    
-  
    
+  
+   request.session["carrito"].append(pedi.descripcion)
+   print(request.session.get("carrito"))
+   
+   
+   print("carrito")
 
-   return render(request, 'blog/pedidos.html',{"pedi":pedi})
+   produ=Producto.objects.all()
+   return render(request, 'blog/main.html',{"produ":produ})
 
 
 def register(request):
@@ -67,7 +89,7 @@ def register(request):
             password = form.cleaned_data['password1']
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('home')
+            return redirect('index')
     else:
         form = UserCreationForm()
 
