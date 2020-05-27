@@ -1,0 +1,25 @@
+{%  extends 'blog/main.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="second-column">
+	{%for cpro in cat_pro %} 	
+	<h3>PRODUCTOS PARA LA CATEGORIA '{{cpro.id_categoria.nombre}}'</h3>
+	<div class="row">
+	    
+	    <div class="col-md-4">
+	    	<div class="product">
+	    		<img src="{{cpro.imagenURL}}" class="thumbnail">
+	    		<h4>{{cpro.nombre }}</h4>
+	    		<h5>${{cpro.precio}}</h5>
+	    		<h6>{{cpro.id_categoria.nombre}}</h6>
+	    		<button data-product={{cpro.id}} data-action="add" class="btn btn-primary add-btn update-cart" id="btn-comprar">Comprar</button>
+	    	</div>
+	    </div>
+	        				
+	</div>
+	{% endfor %}
+</div>
+
+{% endblock %}

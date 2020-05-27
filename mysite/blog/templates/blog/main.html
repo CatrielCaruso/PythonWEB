@@ -11,7 +11,27 @@
 	<link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="text/javascript"> 
 
+		var user = '{{request.user}}'
+
+		function getToken(name) {
+		    var cookieValue = null;
+		    if (document.cookie && document.cookie !== '') {
+		       var cookies = document.cookie.split(';');
+		        for (var i = 0; i < cookies.length; i++) {
+		            var cookie = cookies[i].trim();
+		            // Does this cookie string begin with the name we want?
+		            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+		                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+		                break;
+		            }
+		        }
+		    }
+		    return cookieValue;
+		}
+		var csrftoken = getToken('csrftoken');
+	</script>
 
 </head>
 
@@ -21,26 +41,38 @@
 	{% block content %}
 	<div class="container">
 		<div class="first-column">
+			
   			<div class="row">
-	    		<div class="col-lg-2">
-	      			<h4>Categorías</h4>
+	    		<div class="col-md">
+	      			<div class="list-group" id="list-cat">
+  						<p class="list-group-item list-group-item-action active">
+						    Categorías
+						</p>
+						{%for cat in categorias%}
+						<a href="{% url 'producto_filtrado' pk=cat.id_categoria %}" class="list-group-item list-group-item-action">{{cat.nombre}}</a>
+						{% endfor %}
+					</div>
 	    		</div>
 	    	</div>
+	    	
 	    </div>
 	    <div class="second-column">
-	    	<div class="col-lg-10 align-self-center">
+	    	
 	    		<h3>ENCONTRÁ TODO LO QUE BUSCÁS, ACÁ</h3>
 	    		<div class="row">
-	    		{%for pro in produ%}
-	    		
-	    			<div class="col">
-	    				<h6>{{pro.descripcion}}</h6>
-	    				<a class="btn btn-sm btn-info" href="{% url 'pedidos' pro.id_producto %}">Comprar</a>
+	    			{%for pro in productos%}
+	    			<div class="col-md-4">
+	    				<div class="product">
+	    					<img src="{{pro.imagenURL}}" class="thumbnail">
+	    					<h4>{{pro.nombre}}</h4>
+	    					<h5>${{pro.precio}}</h5>
+	    					<h6>{{pro.id_categoria.nombre}}</h6>
+	    					<button data-product={{pro.id}} data-action="add" class="btn btn-primary add-btn update-cart" id="btn-comprar">Comprar</button>
+	    				</div>
 	    			</div>
-	    		
-	    		{% endfor %}
+	    			{% endfor %}	    				
 	    		</div>
-	    	</div>
+	    		<a class="btn btn-primary btn-lg btn-block" id="btn-vertodo" href="{% url 'producto' %}">Ver todo</a>
 		</div>
 	</div>
 	
@@ -60,5 +92,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 	crossorigin="anonymous"></script>
+<script type="text/javascript" src="{% static 'js/pedido.js' %}"></script>
 
 </html>
