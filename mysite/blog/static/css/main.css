@@ -7,28 +7,37 @@
 }
 
 .menu-logout .navbar-nav{
-	padding-left: 800px;
-	padding-right: 25px;
+	padding-left: 850px;
+
+	
 }
 
 h3{
 	
 	margin-left: 0px;
 	margin-top: 0px;
-	
-	
 }
+
+.title{
+	text-align: center;
+	margin-left: 190px;
+}
+
 
 h4, h5, h6{
 	
-	margin-left: 21px;
+	margin-left: 10px;
+	margin-right:15px;
 	margin-top: 5px;
 	text-align: center;
 	
 
 }
 
+.subtitles{
+	margin-left: 80px;
 
+}
 
 .col-lg-12{
 	margin-top: 10px;
@@ -42,7 +51,7 @@ h4, h5, h6{
 
 .container{
 	width: 100%;
-	height: 300px;
+	height: 600px;
 	margin-top: 25px;
 	display: inline-block;
 	padding-top: 40px;
@@ -65,8 +74,21 @@ h4, h5, h6{
 
 }
 
+#finpedido{
+	width: 80%;
+	margin-left: 95px;
+}
+
+
+.final{
+	margin-left: 30px;
+}
+
+#cerrar{
+	margin-left: 28px;
+}
 #list-cat{
-	width: 120%;
+	width: 250px;
 	margin-left: 30px;
 }
 
@@ -79,6 +101,9 @@ h4, h5, h6{
 	padding-left: 100px;
 }
 
+.product-filtrado{
+	margin-left: 200px;
+}
 
 
 .thumbnail{
@@ -100,17 +125,13 @@ h4, h5, h6{
 	
 }
 
-#btn-comprar{
-	margin-left: 93px;
-	margin-top: 5px;
+#btn-buy{
+	margin-left: 85px;
 }
 
-#btn-vertodo{
-	margin-top: 50px;
-	width: 70%;
-	margin-left: 150px;
-
-
+#btn-comprar{
+	margin-left: 83px;
+	margin-top: 5px;
 }
 
 .cart-row{
@@ -122,18 +143,19 @@ h4, h5, h6{
 
 }
 
+
 .quantity{
 	display: inline-block;
 	font-weight: 700;
-	padding-right:10px;
+	padding-right:6px;
+	padding-left: 3px;
 
 }
 
 .chg-quantity{
 	width: 12px;
 	cursor: pointer;
-	display: block;
-	margin-top: 5px;
+	
 	transition:.1s;
 }
 
@@ -145,4 +167,53 @@ h4, h5, h6{
 
 	width: 100px;
 }
+
+.box-element{
+	width: 90%;
+	padding-left: 100px;
+	
+	margin-top: 20px;
+
+}
+
+
+#gif-gracias{
+	margin-top: 20px;
+	
+}
+
+.gracias{
+	font-family: Showcard Gothic;
+	font-size: 22px;
+	margin-top: 15px;
+}
+
+.product-buscado{
+	margin-left: 50px;
+}
+
+.product-buscado .thumbnail{
+	margin-bottom: 15px;
+	margin-left: 30px;
+
+}
+
+.resumen-producto{
+	margin-top: 60px;
+	margin-right: 80px;
+}
+
+.resumen-producto #btn{
+	margin-right: 70px;
+	margin-left: 7px;
+	width: 60%;
+	margin-top: 7px;
+
+}
+
+.sub{
+	text-align: left;
+}
+
+
 

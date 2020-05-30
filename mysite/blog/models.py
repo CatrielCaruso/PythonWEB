@@ -78,12 +78,14 @@ class Pedido(models.Model):
         orderitems = self.pedidoitems_set.all()
         total= sum([item.cantidad for item in orderitems])
         return total 
+
     
 class PedidoItems(models.Model):
     product = models.ForeignKey(Producto, on_delete=models.SET_NULL, null=True)
     pedido = models.ForeignKey(Pedido, on_delete=models.SET_NULL, null=True)
     cantidad = models.IntegerField(default=0, null=True, blank=True)
     fecha_agregado = models.DateTimeField(auto_now_add=True)
+
     
     @property
     def get_total(self):

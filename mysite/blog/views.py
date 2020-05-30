@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.template.loader import render_to_string
 from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout as do_logout
@@ -29,10 +30,9 @@ def pedido(request):
     context={'items':items, 'pedido':pedido}
     return render(request, 'blog/pedidos.html',context) 
 
-from django.views.decorators.csrf import csrf_exempt
 
 @login_required
-@csrf_exempt
+
 def updateItem(request):
     data = json.loads(request.body)
     productId = data['productId']
@@ -52,23 +52,35 @@ def updateItem(request):
 
     pedidoItem.save()
 
+
     if pedidoItem.cantidad <= 0:
       pedidoItem.delete()
 
     return JsonResponse('Articulo añadido al pedido', safe=False)
 
 
+@login_required
+def producto_filtrado(request, pk=None):
+    id = Categoria.objects.get(id_categoria=pk)
+    cat_pro = Producto.objects.filter(id_categoria=id)
+    context = {'cat_pro':cat_pro}
+    return render(request, 'blog/producto_filtrado.html', context )
+
+
+@login_required
+def finalizar_pedido(request, id_pedido):
+    perfil = request.user.perfil
+    pedido, creado = Pedido.objects.get_or_create(perfil=perfil, orden_completa=False)
+    items = pedido.pedidoitems_set.all()
+    pedido.save()
+    context={'items':items, 'pedido':pedido}
+    return render(request, 'blog/finalizar_pedido.html', context)
+
 
 @login_required
 def producto(request):
     return render(request, 'blog/producto.html')
 
-@login_required
-def producto_filtrado(request, pk=None):
-    id = Categoria.objects.get(id_categoria=pk)
-    cat_pro = Producto.objects.filter(id_categoria=id)
-    return render(request, 'blog/producto_filtrado.html', {'cat_pro':cat_pro})
- 
 
 @login_required
 def buscar(request):
@@ -78,7 +90,7 @@ def buscar(request):
         producto = request.GET["pro"]
         articulos = Producto.objects.filter(descripcion__icontains=producto)
 
-    return render(request, 'blog/producto.html', {"articulos": articulos, "query": producto})
+    return render(request, 'blog/producto.html', {'articulos': articulos, 'query': producto})
     #else:
 
        # mensaje = "No has introducido ningun articulo"
@@ -109,6 +121,7 @@ def register(request):
 
 @login_required
 def logout(request):
+
     # Finalizamos la sesión
     do_logout(request)
     # Redireccionamos a la portada

@@ -1,16 +1,7 @@
-body{
-
-	
-
+/*body{
     background:url(../img/fondocontacto.jpg) no-repeat center center;
 
-
-
-
-
-
-
-}
+}*/
 
 iframe{
 
@@ -19,6 +10,8 @@ iframe{
 }
 
 h1{
-    font-family: Woodland;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",
+   				sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+   margin-top: 30px;
 
 }

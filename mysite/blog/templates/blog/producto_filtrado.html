@@ -3,23 +3,22 @@
 
 {% block content %}
 
-<div class="second-column">
-	{%for cpro in cat_pro %} 	
-	<h3>PRODUCTOS PARA LA CATEGORIA '{{cpro.id_categoria.nombre}}'</h3>
-	<div class="row">
-	    
+<div class="container">
+	<h3 class="title">PRODUCTOS PARA LA CATEGORIA SELECCIONADA</h3>
+	<div class="row justify-content-center">
+	{%for cpro in cat_pro %} 	    
 	    <div class="col-md-4">
-	    	<div class="product">
+	    	<div class="product-filtrado">
 	    		<img src="{{cpro.imagenURL}}" class="thumbnail">
-	    		<h4>{{cpro.nombre }}</h4>
-	    		<h5>${{cpro.precio}}</h5>
-	    		<h6>{{cpro.id_categoria.nombre}}</h6>
-	    		<button data-product={{cpro.id}} data-action="add" class="btn btn-primary add-btn update-cart" id="btn-comprar">Comprar</button>
+	    		<h4 class="subtitles">{{cpro.nombre }}</h4>
+	    		<h5 class="subtitles">${{cpro.precio}}</h5>
+	    		<h6 class="subtitles">{{cpro.id_categoria.nombre}}</h6>
+	    		<button data-product={{cpro.id}} data-action="add" class="btn btn-primary add-btn update-cart" id="btn-buy">Comprar</button>
 	    	</div>
 	    </div>
-	        				
+	{% endfor %}        				
 	</div>
-	{% endfor %}
+	
 </div>
 
 {% endblock %}
