@@ -4,15 +4,17 @@ from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout as do_logout
 from django.contrib.auth.decorators import login_required
-from blog.models import *
+from .models import *
 from .forms import CreateUserForm
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
 import json
 
-
+#Preguntar a Mailen
 # Create your views here.
+
+#from .models import Pedido, Producto, PedidoItems, Categoria
 
 @login_required
 def home(request):
@@ -124,6 +126,7 @@ def logout(request):
 
     # Finalizamos la sesión
     do_logout(request)
+    request.clear()
     # Redireccionamos a la portada
     return redirect('/')
 # def post_list(request):
