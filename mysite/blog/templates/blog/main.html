@@ -1,0 +1,97 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>E-Commers</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="text/javascript"> 
+
+		var user = '{{request.user}}'
+
+		function getToken(name) {
+		    var cookieValue = null;
+		    if (document.cookie && document.cookie !== '') {
+		       var cookies = document.cookie.split(';');
+		        for (var i = 0; i < cookies.length; i++) {
+		            var cookie = cookies[i].trim();
+		            // Does this cookie string begin with the name we want?
+		            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+		                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+		                break;
+		            }
+		        }
+		    }
+		    return cookieValue;
+		}
+		var csrftoken = getToken('csrftoken');
+	</script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+</head>
+
+<body>
+	
+	{%  include 'blog/navbar.html' %}
+	{% block content %}
+	<div class="container">
+		<div class="first-column">
+			
+  			<div class="row">
+	    		<div class="col-md">
+	      			<div class="list-group" id="list-cat">
+  						<p class="list-group-item list-group-item-action active">
+						    Categorías
+						</p>
+						{%for cat in categorias%}
+						<a href="{% url 'producto_filtrado' pk=cat.id_categoria %}" class="list-group-item list-group-item-action">{{cat.nombre}}</a>
+						{% endfor %}
+					</div>
+	    		</div>
+	    	</div>
+	    	
+	    </div>
+	    <div class="second-column ">
+	    	
+	    		<h3>ENCONTRÁ TODO LO QUE BUSCÁS, ACÁ</h3>
+	    		<div class="row">
+	    			{%for pro in productos%}
+	    			<div class="col-md-4">
+	    				<div class="product">
+	    					<img src="{{pro.imagenURL}}" class="thumbnail">
+	    					<h4>{{pro.nombre}}</h4>
+	    					<h5>${{pro.precio}}</h5>
+	    					<h6>{{pro.id_categoria.nombre}}</h6>
+	    					<button data-product={{pro.id}} data-action="add" class="btn btn-primary add-btn update-cart" id="btn-comprar">Comprar</button>
+	    				</div>
+	    			</div>
+	    			{% endfor %}	    				
+	    		</div>
+		</div>
+	</div>
+	
+
+	{% endblock %}
+	
+	
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+	crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+	crossorigin="anonymous"></script>
+<script type="text/javascript" src="{% static 'js/pedido.js' %}"></script>
+<script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+</html>

@@ -1,0 +1,24 @@
+{%  extends 'blog/main.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+	<h3 class="title">PRODUCTOS PARA LA CATEGORIA SELECCIONADA</h3>
+	<div class="row justify-content-center">
+	{%for cpro in cat_pro %} 	    
+	    <div class="col-md-4">
+	    	<div class="product-filtrado">
+	    		<img src="{{cpro.imagenURL}}" class="thumbnail">
+	    		<h4 class="subtitles">{{cpro.nombre }}</h4>
+	    		<h5 class="subtitles">${{cpro.precio}}</h5>
+	    		<h6 class="subtitles">{{cpro.id_categoria.nombre}}</h6>
+	    		<button data-product={{cpro.id}} data-action="add" class="btn btn-primary add-btn update-cart" id="btn-buy">Comprar</button>
+	    	</div>
+	    </div>
+	{% endfor %}        				
+	</div>
+	
+</div>
+
+{% endblock %}

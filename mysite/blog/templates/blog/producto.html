@@ -1,0 +1,43 @@
+{%  extends 'blog/main.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+	<div class="formulario">
+		<form class="form-inline" action="/buscar/" method="GET">
+			
+  			<div class="input-group mb-2">
+    			<input type="text" class="form-control" placeholder="Buscar Producto" name="pro" required>
+  			</div>
+  			<button type="submit" class="btn btn-primary mx-sm-3 mb-2">Buscar</button>
+		</form>
+	</div>
+	<br>
+
+	{% if articulos %}
+		<p>Resultados de: &nbsp;<strong>{{query}}</strong></p>
+		<p>Articulos encontrados {{articulos|length}} articulo/s</p>
+		<div class="row justify-content-left">
+		    {%for articulo in articulos%} 
+	    	<div class="col-md-4">
+	    		<div class="product-buscado">
+	    			<img src="{{articulo.imagenURL}}" class="thumbnail">
+	    		</div>
+	    	</div>
+	    	<div class="col-md-4">
+	    		<div class="resumen-producto">
+	    			<h4 class="sub">{{articulo.nombre }}</h4>
+	    			<h5 class="sub">${{articulo.precio}}</h5>
+	    			<h6 class="sub">{{articulo.descripcion}}</h6>
+	    			<h6 class="sub">Cat.: {{articulo.id_categoria.nombre}}</h6>
+	    			<button data-product={{articulo.id}} data-action="add" class="btn btn-primary add-btn update-cart" id="btn">Comprar</button>
+	    		</div>
+	    	</div>
+			{% endfor %}        				
+		</div>
+	{% else %}
+	    <p class="else">No se encontraron articulos</p>
+	{% endif %}
+</div>
+{% endblock content %}
+			

@@ -1,0 +1,49 @@
+{% extends 'blog/main.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+  <div class="col-md-12">
+    <div class="box-element">
+      <h5>SU PEDIDO <strong>NRO: {{pedido.id}}</strong> FUE ENVIADO CON EXITO</li></h5>
+      <br>
+        <table class="table"> 
+          <tr>
+              <th><strong>Fecha de pedido:</strong> &nbsp; &nbsp;{{pedido.fecha_pedido}}</th>
+              <th><strong>Cantidad de Articulos:</strong> &nbsp; &nbsp;{{pedido.get_pedido_items}}</th> 
+          </tr>
+      </table>
+    </div>
+    <br>
+    <div class="box-element">
+      <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Cantidad</th>
+          <th scope="col">Producto</th>
+          <th scope="col">Precio Unitario</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%for it in items %}
+        <tr>
+          <th scope="row">{{it.cantidad}}</th>
+          <td>{{it.product.nombre}}</td>
+          <td>${{it.product.precio}}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+          <td><strong>TOTAL DEL PEDIDO: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ${{pedido.get_pedido_total}}</strong> </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="fin">
+    <br>
+    <br>
+    <p class="final">Su pedido ha sido enviado a los administradores del sitio, en breve obtendrá una respuesta. Muchas Gracias por comprar en E-commerce &#128588; </p>
+    <a href="{% url 'logout' %}" class="badge badge-success" id="cerrar">Cerrar</a>
+    
+  </div>
+</div>
+{% endblock %}

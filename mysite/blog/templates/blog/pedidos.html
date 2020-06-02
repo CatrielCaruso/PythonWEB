@@ -1,0 +1,60 @@
+{%  extends 'blog/main.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="row">
+	<div class="col-md-9">
+		<div class="box-element">
+  			<a  class="btn btn-outline-dark" href="{% url 'home' %}">&#x2190; Seguir comprando</a>
+  			<br>
+  			<br>
+  			<h5>Resumen de Pedido</h5>
+    			<table class="table">	
+    				<tr>
+      					<th>Cantidad de Articulos: {{pedido.get_pedido_items}}</th>
+      					<th>Total del pedido: ${{pedido.get_pedido_total}}</th>	
+      					<th><a style="float:right; margin:5px;" class="btn btn-success" href="{% url 'finalizar_pedido' id_pedido=pedido.id %}">Finalizar pedido</a></th>
+    				</tr>
+				</table>
+		</div>
+		<br>
+		<br>
+		<br>
+		<div class="box-element">
+  			<div class="cart-row">
+  				<div class ="numeral" style="flex: 2">#</div>
+      			<div style="flex: 2">Articulo</div>
+      			<div style="flex: 1">Precio</div>
+      			<div style="flex: 1">Cantidad</div>
+      			<div style="flex: 1">Total</div>
+    		</div>
+    	</div>
+      	<div class="box-element">
+			{% for ite in items %}	
+      		<div class="cart-row">
+      			<div style="flex: 2"><img class="row-image" id="img-it" src="{{ite.product.imagenURL}}"></div>
+      			<div style="flex: 2"><p>{{ite.product.nombre}}</p></div>
+      			<div style="flex: 1"><p>${{ite.product.precio}}</p></div>
+      			<div style="flex: 1">
+      				<div class="quantity">
+	      				<img data-product="{{ite.product.id}}" data-action="add" class="chg-quantity update-cart" src="{% static 'img/arrow-up.png' %}">
+	      				<p class="quantity">{{ite.cantidad}}</p>
+	      				<img data-product="{{ite.product.id}}" data-action="remove" class="chg-quantity update-cart" src="{% static 'img/arrow-down.png' %}">
+      				</div>
+      			</div>
+      			<div style="flex: 1"><p>${{ite.get_total}}</p></div>
+    		</div>
+    		{% endfor %}
+		</div>
+	</div>
+  	<div class="col-md-3" id="third-column">
+    	<div class="tenor-gif-embed" id="gif-gracias" data-postid="5519170" data-share-method="host" data-width="100%" data-aspect-ratio="1.0"><a href="https://tenor.com/view/por-esperar-listo-gracias-gif-5519170">Gracias Thank You GIF</a> from <a href="https://tenor.com/search/gracias-gifs">Gracias GIFs</a>
+    </div>
+    <h4 class="gracias">Gracias por elegirnos!! &#128512;</h4>
+    
+  </div>
+</div>
+{% endblock %}
+
